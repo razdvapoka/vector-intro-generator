@@ -43,13 +43,11 @@ const arches = [
   bottomRightArch
 ]
 
-const tap = x => { console.log(x); return x }
-
 const randomItemProps = type => {
   switch (type) {
     case TEXT: return {
       ...randomArrayItem(colors),
-      children: [ tap(randomString(tap({ length: 1 + random(5) }))) ]
+      children: [ randomString({ length: 1 + random(5) }) ]
     }
     case ARROW: return randomArrayItem(flips)
     case DASH: return randomArrayItem(margins)
