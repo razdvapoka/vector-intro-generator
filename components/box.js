@@ -1,10 +1,6 @@
 import styled from 'react-emotion'
-import { space, sizes, colors } from 'pss'
+import { system } from 'pss'
 
-const Box = styled.div(
-  space,
-  sizes,
-  colors
-)
+const Box = styled.div(system)
 
 export default Box
