@@ -98,6 +98,7 @@ export default compose(
       intervalId
     }) => (e) => {
       if (e.which === 32) {
+        e.preventDefault()
         if (intervalId) {
           stop()
         } else {
