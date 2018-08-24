@@ -67,7 +67,7 @@ const Intro = ({ intro, isSquared }) => (
 
 export default compose(
   defaultProps({
-    rowCount: 7,
+    rowCount: 6,
     itemCount: 5,
     interval: 1000,
     types: TYPES
@@ -109,7 +109,15 @@ export default compose(
   }),
   lifecycle({
     componentDidMount () {
-      const { start, handleKeyDown } = this.props
+      const {
+        start,
+        handleKeyDown,
+        rowCount,
+        itemCount,
+        types,
+        setIntro
+      } = this.props
+      setIntro(generateIntro(rowCount, itemCount, types))
       start()
       window.addEventListener('keydown', handleKeyDown)
     },
