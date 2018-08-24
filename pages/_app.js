@@ -2,7 +2,9 @@ import App, { Container } from 'next/app'
 import { hydrate, injectGlobal } from 'react-emotion'
 import { ThemeProvider } from 'emotion-theming'
 import theme from '../theme'
-import Box from '../components/box'
+import FlexBox from '../components/flexbox'
+import FlexItem from '../components/flexitem'
+import Header from '../components/header'
 
 injectGlobal`
   html, body, #__next {
@@ -43,11 +45,14 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <ThemeProvider theme={theme}>
-        <Box ht tm>
+        <FlexBox column ht tm>
+          <Header />
           <Container>
-            <Component {...pageProps} />
+            <FlexItem flex={1}>
+              <Component {...pageProps} />
+            </FlexItem>
           </Container>
-        </Box>
+        </FlexBox>
       </ThemeProvider>
     )
   }
