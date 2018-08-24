@@ -7,6 +7,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "animejs": "^2.2.0",
     "babel-plugin-emotion": "^9.2.6",
     "babel-plugin-inline-import": "^3.0.0",
     "defaults.css": "^1.2.0",
