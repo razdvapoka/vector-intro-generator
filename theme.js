@@ -19,10 +19,10 @@ const theme = createTheme({
   palette: {
     default: {
       bg: '#182AEE',
-      fg: '#191919'
+      fg: '#ffffff'
     },
     inverted: {
-      bg: '#191919',
+      bg: '#ffffff',
       fg: '#182AEE'
     }
   },
