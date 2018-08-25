@@ -9,6 +9,10 @@ const Pointer = styled.g({
   opacity: 0
 })
 
+const Path = styled.path({
+  opacity: 0
+})
+
 let Intro1 = () => (
   <Svg wd='80%' ht='60%' pd={2} viewBox='0 0 1310 600'>
     <g fill='none' fillRule='evenodd' transform='translate(-11 0)'>
@@ -28,7 +32,7 @@ let Intro1 = () => (
         <tspan x='194' y='577'>СООБЩЕСТВА</tspan>
       </text>
       <g stroke='#FFF' strokeWidth='16' transform='translate(705 220)'>
-        <path id='line' d='M 0.0,0.0 C 319.391422,0.000133703758 493.262423,0.000200555637 521.613004,0.000200555637 C 564.138874,0.000200555637 598.612903,34.4742299 598.612903,77.0001003 C 598.612903,119.525971 564.138874,154.0 521.613004,154.0 L 459.019355,154.0' />
+        <Path id='line' d='M 0.0,0.0 C 319.391422,0.000133703758 493.262423,0.000200555637 521.613004,0.000200555637 C 564.138874,0.000200555637 598.612903,34.4742299 598.612903,77.0001003 C 598.612903,119.525971 564.138874,154.0 521.613004,154.0 L 459.019355,154.0' />
         <Pointer id='pointer'>
           <path id='barb-1' d='M 8.5 5 L -47 -57.5' />
           <path id='barb-2' d='M 8.5 -5 L -42 56.5' />
@@ -69,6 +73,11 @@ Intro1 = lifecycle({
     animatePath('#line', DEFAULT_OPTIONS, 0)
     animatePath('#barb-1', BARB_OPTIONS, 15)
     animatePath('#barb-2', BARB_OPTIONS, 15)
+    anime({
+      targets: '#line',
+      opacity: 1,
+      offset: 100
+    })
 
     const path = anime.path('#line')
     const pointerTimeline = anime.timeline()
