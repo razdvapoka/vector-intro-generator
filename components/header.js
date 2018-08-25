@@ -6,6 +6,10 @@ const List = styled.ul({
   display: 'flex',
   'li + li': {
     marginLeft: '10px'
+  },
+  'li': {
+    textTransform: 'uppercase',
+    fontWeight: 'bold'
   }
 })
 

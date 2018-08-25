@@ -45,7 +45,7 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <ThemeProvider theme={theme}>
-        <FlexBox column ht tm>
+        <FlexBox column ht tm pd={2}>
           <Header />
           <Container>
             <FlexItem flex={1}>

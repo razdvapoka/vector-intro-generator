@@ -1,4 +1,8 @@
 import FlexBox from '../components/flexbox'
+import { text } from 'pss'
+import styled from 'react-emotion'
+
+const Big = styled.h1(text)
 
 export default () => (
   <FlexBox
@@ -7,6 +11,8 @@ export default () => (
     justify='center'
     ht
   >
-    hey
+    <Big size={100} transform='uppercase'>
+      hey!
+    </Big>
   </FlexBox>
 )
