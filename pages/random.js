@@ -3,9 +3,13 @@ import FlexBox from '../components/flexbox'
 import Intro from '../components/intro'
 
 import {
-  NO_LINES,
-  NO_TEXTS,
-  NO_ARCHES
+  DASH,
+  TEXT,
+  LINE,
+  CIRCLE,
+  ARCH,
+  ARROW,
+  TYPES
 } from '../components/consts'
 
 export default () => (
@@ -18,8 +22,10 @@ export default () => (
     ht
   >
     <Intro />
-    <Intro types={NO_TEXTS} isSquared />
-    <Intro types={NO_LINES} />
-    <Intro types={NO_ARCHES} />
+    <Intro types={TYPES.without([ TEXT, DASH ])} isSquared />
+    <Intro types={TYPES.without([ LINE, CIRCLE ])} maxWordLength={2} />
+    <Intro types={TYPES.without([ ARCH, CIRCLE ])} />
+    <Intro types={TYPES.without([ CIRCLE, DASH, TEXT, ARROW ])} />
+    <Intro types={TYPES.without([ DASH, TEXT, ARROW, ARCH ])} />
   </FlexBox>
 )

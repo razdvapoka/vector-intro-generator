@@ -5,6 +5,7 @@ import Line from './line'
 import Text from './text'
 import Arrow from './arrow'
 import Arch from './arch'
+import Circle from './circle'
 import generateIntro from '../generateIntro'
 
 import {
@@ -13,6 +14,7 @@ import {
   TEXT,
   ARROW,
   ARCH,
+  CIRCLE,
   TYPES
 } from './consts'
 
@@ -29,7 +31,8 @@ const ITEM_TYPES = {
   [LINE]: Line,
   [TEXT]: Text,
   [ARROW]: Arrow,
-  [ARCH]: Arch
+  [ARCH]: Arch,
+  [CIRCLE]: Circle
 }
 
 const Row = ({ items, isSquared }) => (
@@ -81,9 +84,10 @@ export default compose(
       interval,
       rowCount,
       itemCount,
-      types
+      types,
+      maxWordLength
     }) => () => {
-      const regen = () => setIntro(generateIntro(rowCount, itemCount, types))
+      const regen = () => setIntro(generateIntro(rowCount, itemCount, types, maxWordLength))
       setIntervalId(setInterval(regen, interval))
     },
     stop: ({ intervalId, setIntervalId }) => () => {

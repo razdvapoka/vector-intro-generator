@@ -4,7 +4,9 @@ import {
   LINE,
   TEXT,
   ARROW,
-  ARCH
+  ARCH,
+  // CIRCLE,
+  DEFAULT_PER_ROW_LIMITS
 } from './components/consts'
 
 export const random = num => Math.floor(Math.random() * num)
@@ -43,22 +45,25 @@ const arches = [
   bottomRightArch
 ]
 
-const randomItemProps = type => {
+// const circles = [ { bdc: 'white' }, { bdc: 'black' } ]
+
+const randomItemProps = (type, maxWordLength) => {
   switch (type) {
     case TEXT: return {
       ...randomArrayItem(colors),
-      children: [ randomString({ length: 1 + random(5) }) ]
+      children: [ randomString({ length: 1 + random(maxWordLength) }) ]
     }
     case ARROW: return randomArrayItem(flips)
     case DASH: return randomArrayItem(margins)
     case LINE: return randomArrayItem(margins)
     case ARCH: return randomArrayItem(arches)
+    // case CIRCLE: return randomArrayItem(circles)
   }
 }
 
-const randomItem = (types) => {
+const randomItem = (types, maxWordLength) => {
   const type = randomArrayItem(types)
-  const props = randomItemProps(type)
+  const props = randomItemProps(type, maxWordLength)
   return {
     type,
     ...props
@@ -68,19 +73,20 @@ const randomItem = (types) => {
 export default (
   rowCount,
   itemPerRowCount,
-  types
+  types,
+  maxWordLength = 5,
+  limits = DEFAULT_PER_ROW_LIMITS
 ) => (
   range(rowCount)
     .map(() => {
-      let textCount = 0
+      const rowCounter = Object.create(null)
       return range(itemPerRowCount).map(() => {
-        let item = randomItem(types)
-        if (item.type === TEXT) {
-          if (textCount === 1) {
-            item = { type: DASH }
-          } else {
-            textCount++
-          }
+        let item = randomItem(types, maxWordLength)
+        if (rowCounter[item.type] === limits[item.type]) {
+          // cowardly replacing the disagreeable item with a neutral dash
+          item = { type: DASH }
+        } else {
+          rowCounter[item.type] = (rowCounter[item.type] || 0) + 1
         }
         return item
       })

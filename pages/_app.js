@@ -26,7 +26,6 @@ injectGlobal`
 // Adds server generated styles to emotion cache.
 // '__NEXT_DATA__.ids' is set in '_document.js'
 if (typeof window !== 'undefined') {
-  console.log('HYDRATE!')
   hydrate(window.__NEXT_DATA__.ids)
 }
 

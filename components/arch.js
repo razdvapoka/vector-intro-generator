@@ -1,5 +1,5 @@
 import FlexItem from './flexitem'
-import Box from './box'
+import Circle from './circle'
 import { withProps } from 'recompose'
 
 const ArchBox = withProps({
@@ -10,18 +10,9 @@ const ArchBox = withProps({
   ht: '27px'
 })(FlexItem)
 
-const Circle = withProps(({ isSquared }) => ({
-  pab: true,
-  wd: '54px',
-  ht: '54px',
-  bd: '4px solid',
-  bdc: 'white',
-  radius: isSquared ? 0 : 9999
-}))(Box)
-
 const Arch = ({ align, ...props }) => (
   <ArchBox align={align}>
-    <Circle {...props} />
+    <Circle pab {...props} />
   </ArchBox>
 )
 

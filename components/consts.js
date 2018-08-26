@@ -3,17 +3,36 @@ export const ARROW = 'ARROW'
 export const DASH = 'DASH'
 export const LINE = 'LINE'
 export const TEXT = 'TEXT'
+export const CIRCLE = 'CIRCLE'
 
 export const TYPES = [
   ARCH,
   ARROW,
   DASH,
   LINE,
-  TEXT
+  TEXT,
+  CIRCLE
 ]
 
-export const NO_ARROWS = TYPES.filter(type => type !== ARROW)
-export const NO_DASHES = TYPES.filter(type => type !== DASH)
-export const NO_ARCHES = TYPES.filter(type => type !== ARCH)
-export const NO_TEXTS = TYPES.filter(type => type !== TEXT)
-export const NO_LINES = TYPES.filter(type => type !== LINE)
+TYPES.without = function (typesToExclude) {
+  return this.filter(type => !typesToExclude.includes(type))
+}
+
+TYPES.with = function (typesToInclude) {
+  return this.concat(typesToInclude)
+}
+
+export const NO_ARROWS = TYPES.without([ ARROW ])
+export const NO_DASHES = TYPES.without([ DASH ])
+export const NO_ARCHES = TYPES.without([ ARCH ])
+export const NO_TEXTS = TYPES.without([ TEXT ])
+export const NO_LINES = TYPES.without([ LINE ])
+
+export const DEFAULT_PER_ROW_LIMITS = {
+  [ARCH]: Infinity,
+  [ARROW]: Infinity,
+  [DASH]: Infinity,
+  [LINE]: Infinity,
+  [TEXT]: 1,
+  [CIRCLE]: 1
+}
