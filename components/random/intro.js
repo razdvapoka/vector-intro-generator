@@ -1,12 +1,14 @@
-import Box from './box'
-import FlexBox from './flexbox'
-import Dash from './dash'
-import Line from './line'
-import Text from './text'
-import Arrow from './arrow'
-import Arch from './arch'
-import Circle from './circle'
-import generateIntro from '../generateIntro'
+import Box from '../box'
+import FlexBox from '../flexbox'
+import generateIntro from '../../generateIntro'
+import {
+  Dash,
+  Line,
+  Text,
+  Arrow,
+  Arch,
+  Circle
+} from './index'
 
 import {
   DASH,
@@ -16,7 +18,7 @@ import {
   ARCH,
   CIRCLE,
   TYPES
-} from './consts'
+} from '../consts'
 
 import {
   compose,

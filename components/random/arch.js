@@ -1,4 +1,4 @@
-import FlexItem from './flexitem'
+import FlexItem from '../flexitem'
 import Circle from './circle'
 import { withProps } from 'recompose'
 

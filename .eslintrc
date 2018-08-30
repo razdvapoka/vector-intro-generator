@@ -6,5 +6,6 @@
     "react/jsx-sort-props": 0,
     "react/no-deprecated": 0,
     "react/react-in-jsx-scope": 0
-  }
+  },
+  parser: "babel-eslint"
 }

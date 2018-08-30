@@ -1,4 +1,4 @@
-import FlexItem from './flexitem'
+import FlexItem from '../flexitem'
 import { withProps } from 'recompose'
 
 const getProps = () => ({

@@ -1,8 +1,8 @@
-import FlexItem from './flexitem'
-import Box from './box'
+import FlexItem from '../flexitem'
+import Box from '../box'
 import { withProps } from 'recompose'
 import styled from 'react-emotion'
-import { flips, rotation } from '../style-props'
+import { flips, rotation } from '../../style-props'
 
 const ArrowBox = withProps({
   wd: '30px',

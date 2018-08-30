@@ -1,6 +1,6 @@
 import React from 'react'
 import FlexBox from '../components/flexbox'
-import Intro from '../components/intro'
+import Intro from '../components/random/intro'
 
 import {
   DASH,
@@ -26,6 +26,6 @@ export default () => (
     <Intro types={TYPES.without([ LINE, CIRCLE ])} maxWordLength={2} />
     <Intro types={TYPES.without([ ARCH, CIRCLE ])} />
     <Intro types={TYPES.without([ CIRCLE, DASH, TEXT, ARROW ])} />
-    <Intro types={TYPES.without([ DASH, TEXT, ARROW, ARCH ])} />
+    <Intro types={TYPES.without([ DASH, TEXT, ARROW ])} />
   </FlexBox>
 )

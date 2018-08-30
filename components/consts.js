@@ -36,3 +36,15 @@ export const DEFAULT_PER_ROW_LIMITS = {
   [TEXT]: 1,
   [CIRCLE]: 1
 }
+
+export const DURATION = 1000
+export const BARB_DURATION_COEFF = 0.8
+export const EASING = 'easeInQuad'
+export const DEFAULT_OPTIONS = {
+  duration: DURATION,
+  easing: EASING
+}
+export const REVERSE_DEFAULT_OPTIONS = {
+  ...DEFAULT_OPTIONS,
+  direction: 'reverse'
+}
