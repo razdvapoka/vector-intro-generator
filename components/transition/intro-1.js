@@ -4,8 +4,45 @@ import AnimatedPath from './animated-path'
 import AnimatedPointer from './animated-pointer'
 import IntroBox from './intro-box'
 
+const tap = x => { console.log(x); return x }
+
+const randomPath = () => `M ${Array.from(Array(130).keys())
+  .map((_, i) => `${Math.random() * 1310},${Math.random() * 600}`)
+  .join(' L ')}`
+
+const randomSign = () => Math.random() > 0.5 ? 1 : -1
+const randomPoint = (maxX, maxY) => ({
+  x: Math.random() * maxY,
+  y: Math.random() * maxY
+})
+const pointToStr = p => `${p.x},${p.y}`
+
+const randomCurve = (prevPoint) => {
+  const cp1 = {
+    x: prevPoint.x + Math.random() * 50 * randomSign(),
+    y: prevPoint.x + Math.random() * 50 * randomSign()
+  }
+  const dest = randomPoint(1310, 600)
+  const cp2 = {
+    x: dest.x + Math.random() * 50 * randomSign(),
+    y: dest.x + Math.random() * 50 * randomSign()
+  }
+  return curveToString(cp1, cp2, dest)
+}
+
+const curveToString = (cp1, cp2, dest) => `C ${[ cp1, cp2, dest ].map(pointToStr).join(' ')}`
+
+const randomCurvedPath = () => {
+  const p1 = randomPoint(1310, 600)
+  const c1 = randomCurve(p1)
+  const p2 = randomPoint(1310, 600)
+  const c2 = randomCurve(p2)
+  const p3 = randomPoint(1310, 600)
+  return `M 0,0 L ${pointToStr(p1)} ${c1} L ${pointToStr(p2)} ${c2} L ${p3}`
+}
+
 const Intro1 = ({ isBackwards }) => (
-  <IntroBox>
+  <IntroBox minWd={320}>
     <g fill='none' fillRule='evenodd' transform='translate(-11 0)' >
       <Typer isBackwards={isBackwards} x='0' y='272' text='В МЕТОД' />
       <Typer isBackwards={isBackwards} x='9' y='118' text='УРОК 1' fill='#000' />
@@ -27,5 +64,13 @@ const Intro1 = ({ isBackwards }) => (
     </g>
   </IntroBox>
 )
+
+// const Intro1 = ({ isBackwards }) => (
+//   <IntroBox>
+//     <g fill='none' fillRule='evenodd'>
+//       <AnimatedPath isBackwards={isBackwards} d={randomCurvedPath()} />
+//     </g>
+//   </IntroBox>
+// )
 
 export default Intro1

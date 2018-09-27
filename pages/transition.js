@@ -2,6 +2,7 @@ import FlexBox from '../components/flexbox'
 import { system } from 'pss'
 import styled from 'react-emotion'
 import Intro1 from '../components/transition/intro-1'
+import RandomPath from '../components/transition/random-path'
 
 import {
   withProps,
@@ -15,14 +16,15 @@ const Button = withProps({
 })(styled.button(system))
 
 const Transition = ({ isBackwards, launchForward, launchBackward }) => (
-  <FlexBox align='center' justify='center' pd={1} ht>
-    <Button onClick={launchBackward} pfx t={10} r={10}>
+  <FlexBox flexWrapM='wrap' align='center' justify='center' pd={1} ht>
+    <Button onClick={launchBackward} pfx pabM t={10} r={10} rM='calc(100% - 150px)' tM='calc(50% + 30px)'>
       backwards
     </Button>
-    <Button onClick={launchForward} pfx t={60} r={10}>
+    <Button onClick={launchForward} pfx pabM t={60} r={10} rM='50px' tM='calc(50% + 30px)'>
       forwards
     </Button>
     <Intro1 isBackwards={isBackwards} />
+    <RandomPath isBackwards={isBackwards} />
   </FlexBox>
 )
 
