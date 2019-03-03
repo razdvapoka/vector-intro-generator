@@ -19,6 +19,7 @@ export default () => (
     align='center'
     justify='space-around'
     wrap='wrap'
+    mgt='50px'
     ht
   >
     <Intro />
